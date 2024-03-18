@@ -17,19 +17,21 @@ const devConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'host',
-      remotes: {},
-      shared: {
-        react: {
-          singleton: true,
-          eager: true,
-          requiredVersion: packageJson.dependencies.react,
-        },
-        'react-dom': {
-          singleton: true,
-          eager: true,
-          requiredVersion: packageJson.dependencies['react-dom'],
-        },
+      remotes: {
+        dashboard: 'dashboard@http://localhost:8081/remoteEntry.js',
       },
+      // shared: {
+      //   react: {
+      //     singleton: true,
+      //     eager: true,
+      //     requiredVersion: packageJson.dependencies.react,
+      //   },
+      //   'react-dom': {
+      //     singleton: true,
+      //     eager: true,
+      //     requiredVersion: packageJson.dependencies['react-dom'],
+      //   },
+      // },
     }),
   ],
 };
